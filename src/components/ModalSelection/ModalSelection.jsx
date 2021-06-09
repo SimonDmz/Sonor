@@ -6,7 +6,7 @@ import SurveySelector from '../SurveySelector/SurveySelector';
 import InterviewerSelector from '../InterviewerSelector/InterviewerSelector';
 
 function ModalSelection({
-  linkTo, title, show, setShow, dataRetreiver, interviewerMode
+  linkTo, title, show, setShow, dataRetreiver, interviewerMode,
 }) {
   const [redirect, setRedirect] = useState(null);
   const [surveys, setSurveys] = useState(null);
@@ -16,7 +16,7 @@ function ModalSelection({
     dataRetreiver.getDataForMainScreen(null, (data) => {
       setSurveys({
         allSurveys: data.filter(
-          (survey) => survey.preference === true,
+          (survey) => survey.preference,
         ),
       });
     });
@@ -36,9 +36,13 @@ function ModalSelection({
     }
   }, [dataRetreiver, updateSurveys, updateInterviewers, interviewerMode]);
 
+
   useEffect(() => {
     setRedirect(null);
-  }, [show]);
+    if (!interviewerMode) {
+      updateSurveys();
+    }
+  }, [show, interviewerMode, updateSurveys]);
 
   return redirect
     ? <Redirect to={redirect} />

@@ -57,9 +57,9 @@ NotificationManager.error = mockError;
 
 const updatePreferences = jest.fn((newPrefs, cb) => {
   if (newPrefs.includes('simpsonkgs2020x00')) {
-    cb({ status: 500 });
-  } else {
     cb({ status: 200 });
+  } else {
+    cb({ status: 500 });
   }
 });
 
@@ -207,10 +207,8 @@ it('Change preferences', async () => {
   boxes[2].click();
 
   const newPrefs = [
-    'simpsons2020x00',
-    'simpsonqsdfsqes2020x00',
-    'vqs2qfsdfsqe021x00',
-    'vqs202fgd1x00',
+    'vqs2021x00',
+    'simpsonkgs2020x00',
   ];
 
   screen.getByTestId('validate-pref-modif').click();
@@ -234,7 +232,7 @@ it('Change preferences (error response)', async () => {
 
   const boxes = component.baseElement.querySelectorAll('input[type="checkbox"]');
 
-  boxes[6].click();
+  boxes[7].click();
 
   screen.getByTestId('validate-pref-modif').click();
 

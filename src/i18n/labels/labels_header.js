@@ -64,7 +64,7 @@ const header = {
     en: 'Collection by interviewer',
   },
   provisionalStatusByInterviewer: {
-    fr: 'Status provisoire par enquêteur',
+    fr: 'Statut provisoire par enquêteur',
     en: 'Provisional status by interviewer',
   },
   unitsToAffect: {
@@ -96,7 +96,7 @@ const header = {
     en: 'Progress by survey',
   },
   provisionalStatusBySurvey: {
-    fr: 'Status provisoire par enquête',
+    fr: 'Statut provisoire par enquête',
     en: 'Provisional status by survey',
   },
   collection: {
@@ -116,7 +116,7 @@ const header = {
     en: 'Units allocated to the site',
   },
   collectionOrganization: {
-    fr: 'Organisation de la collecte',
+    fr: 'Organisation des collectes',
     en: 'Collection organization',
   },
 };

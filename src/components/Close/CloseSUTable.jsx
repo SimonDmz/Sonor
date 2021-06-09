@@ -51,7 +51,7 @@ class CloseSUTable extends React.Component {
     const { data } = this.props;
     if (prevProps.data !== data) {
       this.setState({ displayedLines: data });
-      const newCheckboxArray = data
+      const newCheckboxArray = Array.isArray(data)
         ? data.reduce(
           (acc, curr) => { acc[curr.id] = false; return acc; }, {},
         )
@@ -292,7 +292,7 @@ class CloseSUTable extends React.Component {
                             </Button>
                             <Button
                               variant="primary"
-                              disabled={stateModified === -1}
+                              disabled={!stateModified || stateModified === -1}
                               data-testid="confirm-validate"
                               onClick={() => {
                                 this.validate();
