@@ -16,7 +16,7 @@ class Utils {
   }
 
   static calculateCompletionRate(data) {
-    return (data.tbrCount + data.finCount) / data.total;
+    return (data.tbrCount + data.finCount + data.cloCount) / data.total;
   }
 
   static calculateOngoing(data) {

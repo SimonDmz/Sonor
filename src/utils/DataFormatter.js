@@ -496,6 +496,7 @@ class DataFormatter {
             cb(
               {
                 linesDetails: stateCounts
+                  .filter((line) => line !== undefined && line !== null)
                   .filter((line) => line.total)
                   .map((x, index) => {
                     const obj = Utils.formatForMonitoringTable(x);
