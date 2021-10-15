@@ -689,6 +689,7 @@ class DataFormatter {
             cb(
               {
                 linesDetails: data
+                  .filter((line) => line !== undefined && line !== null && line[2] !== null)
                   .filter((lineData) => lineData[2].total)
                   .map((lineData) => Utils.formatForCollectionTable(...lineData)),
               },
@@ -728,17 +729,17 @@ class DataFormatter {
           ),
         ];
         Promise.all(datas).then((data) => {
-          resolve(
-            Utils.formatForProvisionalStatusTable(
+          resolve(data[1] !== null
+            ? Utils.formatForProvisionalStatusTable(
               data[0],
               data[1],
-            ),
-          );
+            ) : null);
         });
       }));
       Promise.all(promises).then((data) => {
         cb({
           linesDetails: data
+            .filter((lineData) => lineData !== null)
             .filter((lineData) => lineData.allocated),
           total: data.reduce((acc, curr) => {
             acc.npiCount += curr.npiCount;
@@ -752,8 +753,6 @@ class DataFormatter {
         });
       });
     });
-
-
   }
 
   async getDataForProvisionalStatusTableBySurveyOneInterviewer(interviewer, date, cb) {
@@ -769,17 +768,17 @@ class DataFormatter {
             ),
           ];
           Promise.all(datas).then((data) => {
-            resolve(
-              Utils.formatForProvisionalStatusTable(
+            resolve(data[1] !== null
+              ? Utils.formatForProvisionalStatusTable(
                 data[0],
                 data[1],
-              ),
-            );
+              ) : null);
           });
         }));
         Promise.all(promises).then((data) => {
           cb({
             linesDetails: data
+              .filter((lineData) => lineData !== null)
               .filter((lineData) => lineData.allocated)
               .map((lineData) => lineData),
           });
