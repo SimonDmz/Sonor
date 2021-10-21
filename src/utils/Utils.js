@@ -284,7 +284,7 @@ class Utils {
         Object.keys(elm.stateCount)
           .filter((key) => !isNaN(elm.stateCount[key]))
           .forEach((key) => {
-            result[key] = result[key] + elm.stateCount[key] || elm.stateCount[key];
+            result[key] = (result[key] + elm.stateCount[key]) || elm.stateCount[key];
           });
       });
 
@@ -297,7 +297,7 @@ class Utils {
       Object.keys(elm)
         .filter((key) => !isNaN(elm[key]))
         .forEach((key) => {
-          result[key] = result[key] + elm[key] || elm[key];
+          result[key] = (result[key] + elm[key]) || elm[key];
         });
     });
     return result;
