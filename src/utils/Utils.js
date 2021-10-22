@@ -1,8 +1,7 @@
-import D from '../i18n';
 import C from './constants.json';
+import D from '../i18n';
 
 class Utils {
-
   static convertToDateString(timestamp, locales, options) {
     return new Date(timestamp).toLocaleDateString(locales, options);
   }
@@ -12,18 +11,17 @@ class Utils {
     /*     if(date.getHours.length === 1){
       return `${"0" + date.getHours()}:${(date.getMinutes() < 10 ? '0' : '') + date.getMinutes()}`;
     } */
-    return `${("0" + date.getHours()).slice(-2)}:${(date.getMinutes() < 10 ? '0' : '') + date.getMinutes()}`;
+    return `${`0${date.getHours()}`.slice(-2)}:${
+      (date.getMinutes() < 10 ? '0' : '') + date.getMinutes()
+    }`;
   }
 
   static calculateCompletionRate(data) {
-    return (data.tbrCount + data.finCount) / data.total;
+    return (data.tbrCount + data.finCount + data.cloCount) / data.total;
   }
 
   static calculateOngoing(data) {
-    return data.prcCount
-          + data.aocCount
-          + data.apsCount
-          + data.insCount;
+    return data.prcCount + data.aocCount + data.apsCount + data.insCount;
   }
 
   static calculateCollectionRate(outcomes, stateCount) {
@@ -31,21 +29,23 @@ class Utils {
   }
 
   static calculateWasteRate(outcomes, stateCount) {
-    return (outcomes.refCount
-        + outcomes.impCount
-        + stateCount.npiCount
-    ) / (stateCount.total - stateCount.npaCount);
+    return (
+      (outcomes.refCount + outcomes.impCount + stateCount.npiCount)
+      / (stateCount.total - stateCount.npaCount)
+    );
   }
 
   static calculateOutOfScopeRate(outcomes, stateCount) {
-    return (outcomes.ucdCount
-      + outcomes.alaCount
-      + outcomes.dcdCount
-      + outcomes.nuhCount
-      + outcomes.utrCount
-      + outcomes.acpCount
-      + outcomes.nerCount)
-      / (stateCount.total - stateCount.npaCount);
+    return (
+      (outcomes.ucdCount
+        + outcomes.alaCount
+        + outcomes.dcdCount
+        + outcomes.nuhCount
+        + outcomes.utrCount
+        + outcomes.acpCount
+        + outcomes.nerCount)
+      / (stateCount.total - stateCount.npaCount)
+    );
   }
 
   static formatForMonitoringTable(stateCount) {
@@ -78,8 +78,13 @@ class Utils {
     line.surveysAccepted = outcomes.inaCount;
     line.refusal = outcomes.refCount;
     line.unreachable = outcomes.impCount;
-    line.otherWastes = outcomes.utrCount + outcomes.acpCount + outcomes.nerCount;
-    line.outOfScope = outcomes.ucdCount + outcomes.alaCount + outcomes.nuhCount;
+    line.outOfScope = outcomes.ucdCount
+      + outcomes.alaCount
+      + outcomes.nuhCount
+      + outcomes.utrCount
+      + outcomes.acpCount
+      + outcomes.nerCount
+      + outcomes.dcdCount;
     line.totalProcessed = stateCount.tbrCount + stateCount.finCount;
     line.absInterviewer = stateCount.npaCount;
     line.otherReason = stateCount.npiCount + stateCount.rowCount;
@@ -147,8 +152,19 @@ class Utils {
     }
 
     const labelsSimpleSort = [
-      'city', 'departement', 'ssech', 'campaignLabel', 'interviewer', 'campaign',
-      'label', 'id', 'survey', 'site', 'date', 'finalizationDate', 'state',
+      'city',
+      'departement',
+      'ssech',
+      'campaignLabel',
+      'interviewer',
+      'campaign',
+      'label',
+      'id',
+      'survey',
+      'site',
+      'date',
+      'finalizationDate',
+      'state',
     ];
     if (labelsSimpleSort.includes(sortOn)) {
       return (a, b) => {
@@ -163,8 +179,8 @@ class Utils {
     }
     if (sortOn === 'CPinterviewer') {
       return (a, b) => {
-        const aString = (a.interviewerLastName + a.interviewerFirstName);
-        const bString = (b.interviewerLastName + b.interviewerFirstName);
+        const aString = a.interviewerLastName + a.interviewerFirstName;
+        const bString = b.interviewerLastName + b.interviewerFirstName;
         if (aString < bString) {
           return -1 * mult;
         }
@@ -196,8 +212,10 @@ class Utils {
     }
     if (['interviewer_terminated', 'interviewer_closable'].includes(sortOn)) {
       return (a, b) => {
-        const aString = (a.interviewer.interviewerLastName + a.interviewer.interviewerFirstName);
-        const bString = (b.interviewer.interviewerLastName + b.interviewer.interviewerFirstName);
+        const aString = a.interviewer.interviewerLastName
+          + a.interviewer.interviewerFirstName;
+        const bString = b.interviewer.interviewerLastName
+          + b.interviewer.interviewerFirstName;
         if (aString < bString) {
           return -1 * mult;
         }
@@ -209,8 +227,7 @@ class Utils {
     }
     return (a, b) => (a[sortOn] === b[sortOn] && mainSort
       ? mainSortFunc(a, b)
-      : (a[sortOn] - b[sortOn]) * mult
-    );
+      : (a[sortOn] - b[sortOn]) * mult);
   }
 
   static sortData(data, sortOn, asc, mainSortAttr) {
@@ -247,7 +264,9 @@ class Utils {
       });
 
     const finalArray = Object.keys(result).map((key) => {
-      const formattedData = this.formatForMonitoringTable(result[key].stateCount);
+      const formattedData = this.formatForMonitoringTable(
+        result[key].stateCount,
+      );
       formattedData.interviewerFirstName = result[key].interviewerFirstName;
       formattedData.interviewerLastName = result[key].interviewerLastName;
       formattedData.interviewerId = result[key].interviewerId;
@@ -274,14 +293,13 @@ class Utils {
 
   static sumElms(data) {
     const result = {};
-    data
-      .forEach((elm) => {
-        Object.keys(elm)
-          .filter((key) => !isNaN(elm[key]))
-          .forEach((key) => {
-            result[key] = (result[key] + elm[key]) || elm[key];
-          });
-      });
+    data.forEach((elm) => {
+      Object.keys(elm)
+        .filter((key) => !isNaN(elm[key]))
+        .forEach((key) => {
+          result[key] = (result[key] + elm[key]) || elm[key];
+        });
+    });
     return result;
   }
 
@@ -330,7 +348,12 @@ class Utils {
         break;
       case 'campaignPortal':
         Object.assign(sortedData, data);
-        sortedData.interviewers = this.sortData(data.interviewers, sortOn, newOrder, 'CPinterviewer');
+        sortedData.interviewers = this.sortData(
+          data.interviewers,
+          sortOn,
+          newOrder,
+          'CPinterviewer',
+        );
         break;
       case 'monitoringTable': {
         Object.assign(sortedData, data);
@@ -344,7 +367,12 @@ class Utils {
             mainAttr = 'CPinterviewer';
           }
         }
-        sortedData.linesDetails = this.sortData(data.linesDetails, sortOn, newOrder, mainAttr);
+        sortedData.linesDetails = this.sortData(
+          data.linesDetails,
+          sortOn,
+          newOrder,
+          mainAttr,
+        );
         break;
       }
       case 'review':
