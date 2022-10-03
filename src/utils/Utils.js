@@ -79,12 +79,13 @@ class Utils {
     line.refusal = outcomes.refCount;
     line.unreachable = outcomes.impCount;
     line.outOfScope = outcomes.ucdCount
-      + outcomes.alaCount
-      + outcomes.nuhCount
       + outcomes.utrCount
-      + outcomes.acpCount
-      + outcomes.nerCount
-      + outcomes.dcdCount;
+      + outcomes.alaCount
+      + outcomes.dcdCount
+      + outcomes.nuhCount
+      + outcomes.dukCount
+      + outcomes.duuCount
+      + outcomes.noaCount;
     line.totalProcessed = stateCount.tbrCount + stateCount.finCount;
     line.absInterviewer = stateCount.npaCount;
     line.otherReason = stateCount.npiCount + stateCount.rowCount;

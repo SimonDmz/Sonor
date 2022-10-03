@@ -1076,10 +1076,11 @@ export default ({ config, db }) => {
         ucdCount:11,
         utrCount:9,
         alaCount:7,
-        acpCount:2,
+        dukCount:2,
+        duuCount:0,
         dcdCount:1,
         nuhCount:1,
-        nerCount:1,
+        noaCount:1,
       };
 
       res.json(mockResponse);
@@ -1215,10 +1216,11 @@ export default ({ config, db }) => {
           ucdCount:11,
           utrCount:9,
           alaCount:7,
-          acpCount:2,
+          dukCount:2,
+duuCount:0,
           dcdCount:1,
           nuhCount:1,
-          nerCount:1,
+          noaCount:1,
           total: 104,
         },
         {
@@ -1230,10 +1232,11 @@ export default ({ config, db }) => {
           ucdCount:11,
           utrCount:9,
           alaCount:7,
-          acpCount:2,
+          dukCount:2,
+duuCount:0,
           dcdCount:1,
           nuhCount:1,
-          nerCount:1,
+          noaCount:1,
           total: 104,
         },
         {
@@ -1245,10 +1248,11 @@ export default ({ config, db }) => {
           ucdCount:11,
           utrCount:9,
           alaCount:7,
-          acpCount:2,
+          dukCount:2,
+duuCount:0,
           dcdCount:1,
           nuhCount:1,
-          nerCount:1,
+          noaCount:1,
           total: 104,
         },
       ],
@@ -1258,10 +1262,11 @@ export default ({ config, db }) => {
         ucdCount:11,
         utrCount:9,
         alaCount:7,
-        acpCount:2,
+        dukCount:2,
+duuCount:0,
         dcdCount:1,
         nuhCount:1,
-        nerCount:1,
+        noaCount:1,
         total: 104,
       },
     };
@@ -1286,10 +1291,11 @@ export default ({ config, db }) => {
         ucdCount:11,
         utrCount:9,
         alaCount:7,
-        acpCount:2,
+        dukCount:2,
+duuCount:0,
         dcdCount:1,
         nuhCount:1,
-        nerCount:1,
+        noaCount:1,
       },
       {
         campaign: {
@@ -1301,10 +1307,11 @@ export default ({ config, db }) => {
         ucdCount:11,
         utrCount:9,
         alaCount:7,
-        acpCount:2,
+        dukCount:2,
+duuCount:0,
         dcdCount:1,
         nuhCount:1,
-        nerCount:1,
+        noaCount:1,
       },
       {
         campaign: {
@@ -1316,10 +1323,11 @@ export default ({ config, db }) => {
         ucdCount:11,
         utrCount:9,
         alaCount:7,
-        acpCount:2,
+        dukCount:2,
+duuCount:0,
         dcdCount:1,
         nuhCount:1,
-        nerCount:1,
+        noaCount:1,
       },
       {
         campaign: {
@@ -1331,10 +1339,11 @@ export default ({ config, db }) => {
         ucdCount:11,
         utrCount:9,
         alaCount:7,
-        acpCount:2,
+        dukCount:2,
+duuCount:0,
         dcdCount:1,
         nuhCount:1,
-        nerCount:1,
+        noaCount:1,
       },
       {
         campaign: {
@@ -1346,10 +1355,11 @@ export default ({ config, db }) => {
         ucdCount:11,
         utrCount:9,
         alaCount:7,
-        acpCount:2,
+        dukCount:2,
+duuCount:0,
         dcdCount:1,
         nuhCount:1,
-        nerCount:1,
+        noaCount:1,
       },
       {
         campaign: {
@@ -1361,10 +1371,11 @@ export default ({ config, db }) => {
         ucdCount:11,
         utrCount:9,
         alaCount:7,
-        acpCount:2,
+        dukCount:2,
+duuCount:0,
         dcdCount:1,
         nuhCount:1,
-        nerCount:1,
+        noaCount:1,
       },
       {
         campaign: {
@@ -1376,10 +1387,11 @@ export default ({ config, db }) => {
         ucdCount:11,
         utrCount:9,
         alaCount:7,
-        acpCount:2,
+        dukCount:2,
+duuCount:0,
         dcdCount:1,
         nuhCount:1,
-        nerCount:1,
+        noaCount:1,
       },
     ];
     res.json(mockResponse);
@@ -1800,10 +1812,11 @@ export default ({ config, db }) => {
       ucdCount:11,
       utrCount:9,
       alaCount:7,
-      acpCount:2,
+      dukCount:2,
+duuCount:0,
       dcdCount:1,
       nuhCount:1,
-      nerCount:1,
+      noaCount:1,
     };
     res.json(mockResponse);
   });
