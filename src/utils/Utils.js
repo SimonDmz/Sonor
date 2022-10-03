@@ -38,12 +38,13 @@ class Utils {
   static calculateOutOfScopeRate(outcomes, stateCount) {
     return (
       (outcomes.ucdCount
+        + outcomes.utrCount
         + outcomes.alaCount
         + outcomes.dcdCount
         + outcomes.nuhCount
-        + outcomes.utrCount
-        + outcomes.acpCount
-        + outcomes.nerCount)
+        + outcomes.dukCount
+        + outcomes.duuCount
+        + outcomes.noaCount)
       / (stateCount.total - stateCount.npaCount)
     );
   }
