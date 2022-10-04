@@ -35,7 +35,8 @@ class Utils {
     );
   }
 
-  static calculateOutOfScopeRate(outcomes, stateCount) {
+  // Comming soon with business rule
+  static calculateOutOfScopeRateInterviewer(outcomes, stateCount) {
     return (
       (outcomes.ucdCount
         + outcomes.utrCount
@@ -46,6 +47,20 @@ class Utils {
         + outcomes.duuCount
         + outcomes.noaCount)
       / (stateCount.total - stateCount.npaCount)
+    );
+  }
+
+  static calculateOutOfScopeRateManagement(outcomes, stateCount) {
+    return (
+      (outcomes.ucdCount
+        + outcomes.utrCount
+        + outcomes.alaCount
+        + outcomes.dcdCount
+        + outcomes.nuhCount
+        + outcomes.dukCount
+        + outcomes.duuCount
+        + outcomes.noaCount)
+      / (stateCount.total)
     );
   }
 
@@ -75,7 +90,7 @@ class Utils {
 
     line.collectionRate = this.calculateCollectionRate(outcomes, stateCount);
     line.wasteRate = this.calculateWasteRate(outcomes, stateCount);
-    line.outOfScopeRate = this.calculateOutOfScopeRate(outcomes, stateCount);
+    line.outOfScopeRate = this.calculateOutOfScopeRateManagement(outcomes, stateCount);
     line.surveysAccepted = outcomes.inaCount;
     line.refusal = outcomes.refCount;
     line.unreachable = outcomes.impCount;
