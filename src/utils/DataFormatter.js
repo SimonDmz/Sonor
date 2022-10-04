@@ -749,11 +749,12 @@ class DataFormatter {
           total: data.reduce((acc, curr) => {
             acc.npiCount += curr.npiCount;
             acc.npaCount += curr.npaCount;
+            acc.npxCount += curr.npxCount;
             acc.total += curr.total;
             acc.allocated += curr.allocated;
             return acc;
           }, {
-            allocated: 0, npiCount: 0, npaCount: 0, total: 0,
+            allocated: 0, npiCount: 0, npaCount: 0, npxCount: 0, total: 0,
           }),
         });
       });
