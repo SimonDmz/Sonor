@@ -25,13 +25,13 @@ class Utils {
   }
 
   static calculateCollectionRate(outcomes, stateCount) {
-    return outcomes.inaCount / (stateCount.total - stateCount.npaCount);
+    return outcomes.inaCount / stateCount.total;
   }
 
   static calculateWasteRate(outcomes, stateCount) {
     return (
       (outcomes.refCount + outcomes.impCount + stateCount.npiCount)
-      / (stateCount.total - stateCount.npaCount)
+      / stateCount.total
     );
   }
 
@@ -104,8 +104,8 @@ class Utils {
       + outcomes.noaCount;
     line.totalProcessed = stateCount.tbrCount + stateCount.finCount;
     line.absInterviewer = stateCount.npaCount;
-    line.otherReason = stateCount.npiCount + stateCount.rowCount;
-    line.totalClosed = stateCount.npaCount + stateCount.npiCount + stateCount.rowCount;
+    line.otherReason = stateCount.npiCount + stateCount.npxCount + stateCount.rowCount;
+    line.totalClosed = stateCount.npaCount + stateCount.npiCount + stateCount.npxCount + stateCount.rowCount;
     line.allocated = stateCount.total;
 
     return line;
@@ -122,6 +122,7 @@ class Utils {
       line.survey = initialObject.survey;
     }
     line.npiCount = closingCauses.npiCount;
+    line.npxCount = closingCauses.npxCount;
     line.npaCount = closingCauses.npaCount;
     line.rowCount = closingCauses.rowCount;
     line.total = closingCauses.npaCount + closingCauses.npiCount + closingCauses.rowCount;
