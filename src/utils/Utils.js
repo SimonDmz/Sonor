@@ -45,7 +45,9 @@ class Utils {
         + outcomes.nuhCount
         + outcomes.dukCount
         + outcomes.duuCount
-        + outcomes.noaCount)
+        + outcomes.noaCount
+        + stateCount.npxCount
+        + stateCount.rowCount)
       / (stateCount.total - stateCount.npaCount)
     );
   }
@@ -59,7 +61,9 @@ class Utils {
         + outcomes.nuhCount
         + outcomes.dukCount
         + outcomes.duuCount
-        + outcomes.noaCount)
+        + outcomes.noaCount
+        + stateCount.npxCount
+        + stateCount.rowCount)
       / (stateCount.total)
     );
   }
