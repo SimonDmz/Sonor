@@ -750,11 +750,12 @@ class DataFormatter {
             acc.npiCount += curr.npiCount;
             acc.npaCount += curr.npaCount;
             acc.npxCount += curr.npxCount;
+            acc.rowCount += curr.rowCount;
             acc.total += curr.total;
             acc.allocated += curr.allocated;
             return acc;
           }, {
-            allocated: 0, npiCount: 0, npaCount: 0, npxCount: 0, total: 0,
+            allocated: 0, npiCount: 0, npaCount: 0, npxCount: 0, rowCount: 0, total: 0,
           }),
         });
       });
