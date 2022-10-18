@@ -68,7 +68,7 @@ const labelsStates = {
     en: 'Not processed : interviewer presence',
   },
   NPX: {
-    fr: 'Non traité pour raison exceptionnelle',
+    fr: 'Non traité pour cause exceptionnelle',
     en: 'Not processed for exceptional reason',
   },
   ROW: {

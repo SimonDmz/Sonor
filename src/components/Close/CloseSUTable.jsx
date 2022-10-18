@@ -220,6 +220,10 @@ class CloseSUTable extends React.Component {
                                 {D.ssech}
                                 <SortIcon val="ssech" sort={sort} />
                               </th>
+                              <th onClick={handleSortFunct('identificationState')} className="Clickable ColIdentificationState">
+                                {D.identificationState}
+                                <SortIcon val="identificationState" sort={sort} />
+                              </th>
                               <th onClick={handleSortFunct('contact_outcome')} className="Clickable ColLocation">
                                 {D.contactOutcome}
                                 <SortIcon val="contact_outcome" sort={sort} />

@@ -182,6 +182,7 @@ class Utils {
       'campaign',
       'label',
       'id',
+      'identificationState',
       'survey',
       'site',
       'date',
